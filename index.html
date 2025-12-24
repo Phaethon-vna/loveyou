@@ -3,42 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi Nanh yêu dấu</title>
+    <title>Giáng Sinh Ấm Áp Cho Nanh</title>
     <style>
         body {
-            background-color: #ffeef2;
+            /* Đổi sang màu đỏ rượu vang sang trọng của Giáng sinh */
+            background-color: #a01d21;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #d63384;
-            text-align: center;
+            color: #2d5a27; /* Màu xanh lá thông */
+            overflow: hidden; /* Giữ tuyết trong màn hình */
+        }
+
+        /* Hiệu ứng tuyết rơi */
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 400px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+            max-width: 350px;
+            z-index: 1;
+            border: 5px dashed #2d5a27; /* Viền kiểu kẹo gậy */
+            position: relative;
+        }
+
+        /* Thêm mũ Noel lên đầu khung */
+        .container::before {
+            content: '🎅';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
         }
 
         img {
             width: 100%;
             border-radius: 15px;
             margin-bottom: 20px;
+            border: 3px solid #f1c40f; /* Viền vàng lấp lánh */
         }
 
-        h1 { font-size: 24px; }
-        p { font-size: 18px; line-height: 1.6; }
+        h1 { font-size: 26px; color: #c0392b; }
+        p { font-size: 18px; line-height: 1.6; font-weight: 500; }
 
         .heart {
             color: #e74c3c;
-            font-size: 50px;
+            font-size: 40px;
             animation: beat 1s infinite;
+            display: inline-block;
         }
 
         @keyframes beat {
@@ -46,21 +73,63 @@
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
+
+        /* Style cho bông tuyết */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            z-index: 1000;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; }
+            100% { top: 100%; }
+        }
     </style>
 </head>
 <body>
 
+    <div id="snow-container"></div>
+
     <div class="container">
-        <div class="heart">❤️</div>
-        <h1>Gửi [Tên người yêu]</h1>
-        <img src="https://via.placeholder.com/300" alt="Ảnh của chúng mình">
+        <div class="heart">🎄</div>
+        <h1>Gửi bé Nanh của anh</h1>
+        
+        <img src="https://via.placeholder.com/300x350" alt="Hình ảnh Noel của chúng mình">
+        
         <p>
-            "Yêu bé Nanh. <br>
-            Cục cưng giáng sinh vui vẻ nho"
+            "Yêu bé Nanh nhìu nhìu. <br>
+            Cục cưng Giáng sinh vui vẻ, ấm áp bên anh nhooo!"
         </p>
-        <p><strong>Yêu Nanh quá ò</strong></p>
+        <p><strong style="font-size: 22px;">Merry Christmas! ❄️</strong></p>
+        <div class="heart">❤️</div>
     </div>
+
+    <script>
+        // Script tạo tuyết rơi ngẫu nhiên
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.getElementById('snow-container').appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+        setInterval(createSnowflake, 100);
+    </script>
 
 </body>
 </html>
-
