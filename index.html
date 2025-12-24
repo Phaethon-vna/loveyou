@@ -6,7 +6,6 @@
     <title>Giáng Sinh Ấm Áp Cho Nanh</title>
     <style>
         body {
-            /* Đổi sang màu đỏ rượu vang sang trọng của Giáng sinh */
             background-color: #a01d21;
             display: flex;
             flex-direction: column;
@@ -15,50 +14,54 @@
             min-height: 100vh;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2d5a27; /* Màu xanh lá thông */
-            overflow: hidden; /* Giữ tuyết trong màn hình */
+            color: #2d5a27;
+            overflow: hidden;
         }
 
-        /* Hiệu ứng tuyết rơi */
-        .snowflakes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
+        /* Container chính */
         .container {
             background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(0,0,0,0.3);
-            max-width: 350px;
+            max-width: 400px;
+            width: 90%;
             z-index: 1;
-            border: 5px dashed #2d5a27; /* Viền kiểu kẹo gậy */
+            border: 5px dashed #2d5a27;
             position: relative;
+            text-align: center;
         }
 
-        /* Thêm mũ Noel lên đầu khung */
         .container::before {
             content: '🎅';
             position: absolute;
-            top: -40px;
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 50px;
         }
 
-        img {
+        /* Khung chứa video nhạc */
+        .video-container {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
+            height: 0;
+            overflow: hidden;
             border-radius: 15px;
             margin-bottom: 20px;
-            border: 3px solid #f1c40f; /* Viền vàng lấp lánh */
+            border: 3px solid #f1c40f;
         }
 
-        h1 { font-size: 26px; color: #c0392b; }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 { font-size: 24px; color: #c0392b; margin-top: 10px; }
         p { font-size: 18px; line-height: 1.6; font-weight: 500; }
 
         .heart {
@@ -74,12 +77,11 @@
             100% { transform: scale(1); }
         }
 
-        /* Style cho bông tuyết */
+        /* Bông tuyết */
         .snowflake {
             position: fixed;
             top: -10px;
             color: white;
-            font-size: 1em;
             user-select: none;
             z-index: 1000;
             animation-name: fall;
@@ -101,7 +103,13 @@
         <div class="heart">🎄</div>
         <h1>Gửi bé Nanh của anh</h1>
         
-        <img src="https://via.placeholder.com/300x350" alt="Hình ảnh Noel của chúng mình">
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/aAkMkVFwAoo?autoplay=1" 
+                title="Christmas Music" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
         
         <p>
             "Yêu bé Nanh nhìu nhìu. <br>
@@ -112,7 +120,6 @@
     </div>
 
     <script>
-        // Script tạo tuyết rơi ngẫu nhiên
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -121,12 +128,8 @@
             snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
             snowflake.style.opacity = Math.random();
             snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            
             document.getElementById('snow-container').appendChild(snowflake);
-            
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
+            setTimeout(() => { snowflake.remove(); }, 5000);
         }
         setInterval(createSnowflake, 100);
     </script>
