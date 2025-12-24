@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Người Anh/Em Yêu</title>
+    <style>
+        body {
+            background-color: #ffeef2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #d63384;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 24px; }
+        p { font-size: 18px; line-height: 1.6; }
+
+        .heart {
+            color: #e74c3c;
+            font-size: 50px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Gửi [Tên người yêu]</h1>
+        <img src="https://via.placeholder.com/300" alt="Ảnh của chúng mình">
+        <p>
+            "Cảm ơn em/anh đã xuất hiện trong cuộc đời của anh/em. <br>
+            Chúc mừng ngày kỷ niệm của chúng mình!"
+        </p>
+        <p><strong>Yêu em/anh rất nhiều!</strong></p>
+    </div>
+
+</body>
+</html>
